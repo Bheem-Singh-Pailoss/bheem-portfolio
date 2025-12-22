@@ -1,26 +1,138 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  color-scheme: dark;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+html.light {
+  color-scheme: light;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  @apply bg-slate-950 text-slate-100 antialiased;
+  font-family: var(--font-geist-sans), system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+}
+
+html.light body {
+  @apply bg-slate-50 text-slate-900;
+}
+
+.main-gradient-bg {
+  @apply bg-slate-950;
+}
+
+.page-shell {
+  position: relative;
+  overflow: hidden;
+}
+
+.page-shell::before {
+  content: "";
+  position: fixed;
+  inset: -40%;
+  background:
+    radial-gradient(circle at top, rgba(34, 197, 94, 0.22), transparent 55%),
+    radial-gradient(circle at bottom right, rgba(56, 189, 248, 0.26), transparent 55%);
+  opacity: 0.9;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.page-shell::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, rgba(148, 163, 184, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(148, 163, 184, 0.08) 1px, transparent 1px);
+  background-size: 120px 120px;
+  opacity: 0.16;
+  mix-blend-mode: soft-light;
+  pointer-events: none;
+  z-index: -2;
+}
+
+.section-padding {
+  @apply py-16 sm:py-20 lg:py-24;
+}
+
+.section-container {
+  @apply mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8;
+}
+
+.glass-panel {
+  @apply rounded-2xl border border-white/10 bg-white/5 shadow-lg shadow-black/40 backdrop-blur;
+}
+
+.chip {
+  @apply inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium uppercase tracking-wide text-slate-200;
+}
+
+.badge-soft {
+  @apply inline-flex items-center rounded-full bg-emerald-500/10 px-2.5 py-0.5 text-xs font-medium text-emerald-300;
+}
+
+.text-muted {
+  @apply text-sm text-slate-400;
+}
+
+.section-title {
+  @apply text-sm font-semibold uppercase tracking-[0.2em] text-emerald-400;
+}
+
+.heading-xl {
+  @apply text-3xl font-semibold tracking-tight text-slate-50 sm:text-4xl lg:text-5xl;
+}
+
+.heading-lg {
+  @apply text-2xl font-semibold tracking-tight text-slate-50 sm:text-3xl;
+}
+
+.heading-md {
+  @apply text-xl font-semibold tracking-tight text-slate-50;
+}
+
+.card {
+  @apply glass-panel relative flex flex-col rounded-2xl border border-white/10 bg-slate-900/60 p-5 shadow-lg shadow-black/30 transition hover:border-emerald-400/60 hover:shadow-emerald-500/25;
+}
+
+.card-subtle {
+  @apply rounded-2xl border border-white/5 bg-slate-900/60 p-5 shadow-sm shadow-black/20;
+}
+
+.tag-pill {
+  @apply rounded-full bg-slate-800 px-2.5 py-1 text-xs font-medium text-slate-100;
+}
+
+.gradient-pill {
+  @apply inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-emerald-500 via-cyan-400 to-sky-500 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-slate-900 shadow-lg shadow-emerald-500/40;
+}
+
+.link-muted {
+  @apply text-sm text-slate-400 underline-offset-4 transition hover:text-emerald-400 hover:underline;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+  @apply w-full rounded-xl border border-white/10 bg-slate-900/60 px-3 py-2 text-sm text-slate-100 shadow-inner shadow-black/30 outline-none transition placeholder:text-slate-500 hover:border-emerald-500/50 focus:border-emerald-400 focus:ring-1 focus:ring-emerald-500/70;
+}
+
+button.btn-primary {
+  @apply inline-flex items-center justify-center gap-2 rounded-full bg-emerald-500 px-5 py-2 text-sm font-semibold text-slate-950 shadow-lg shadow-emerald-500/40 transition hover:bg-emerald-400 hover:shadow-emerald-400/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900;
+}
+
+button.btn-ghost {
+  @apply inline-flex items-center justify-center gap-2 rounded-full border border-white/10 bg-transparent px-5 py-2 text-sm font-semibold text-slate-100 shadow-sm shadow-black/20 transition hover:border-emerald-400/60 hover:bg-white/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900;
+}
+
+.badge-pill {
+  @apply inline-flex items-center gap-2 rounded-full border border-emerald-500/50 bg-emerald-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-emerald-200;
 }

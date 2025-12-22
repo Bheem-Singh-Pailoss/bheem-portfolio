@@ -1,12 +1,15 @@
 {
   "name": "bheem-portfolio",
   "version": "0.1.0",
+    "homepage": "https://bheem-singh-pailoss.github.io/bheem-portfolio",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "deploy": "gh-pages -d out"
+
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",

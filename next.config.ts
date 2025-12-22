@@ -1,12 +1,11 @@
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
-  reactCompiler: true,
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   output: "export",
-  trailingSlash: true,
   images: {
     unoptimized: true,
   },
+  basePath: "/bheem-portfolio",
+  assetPrefix: "/bheem-portfolio/",
 };
 
-export default nextConfig;
+module.exports = nextConfig;

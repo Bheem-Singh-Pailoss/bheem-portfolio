@@ -42,13 +42,12 @@ export class ContactController implements IContactController {
     this.setStatus({ type: "loading" });
 
     try {
-      // Get current form data from state setter callback
       let currentFormData: ContactFormData = { name: "", email: "", message: "" };
       this.setFormData((prev) => {
         currentFormData = prev;
         return prev;
       });
-      
+
       await this.service.sendMessage(currentFormData);
       this.setStatus({
         type: "success",
@@ -71,7 +70,6 @@ export class ContactController implements IContactController {
   }
 }
 
-// Hook-based controller for React
 export function useContactController() {
   const [formData, setFormData] = useState<ContactFormData>({
     name: "",

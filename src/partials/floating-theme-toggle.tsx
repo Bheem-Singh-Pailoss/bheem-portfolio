@@ -18,10 +18,8 @@ export function FloatingThemeToggle() {
       setIsDark(hasDarkClass);
     };
 
-    // Check initial theme
     checkTheme();
 
-    // Watch for theme changes
     const observer = new MutationObserver(checkTheme);
     if (typeof window !== "undefined") {
       observer.observe(window.document.documentElement, {
@@ -30,14 +28,12 @@ export function FloatingThemeToggle() {
       });
     }
 
-    // Also check based on theme state
     const updateTheme = () => {
       if (theme === "dark") {
         setIsDark(true);
       } else if (theme === "light") {
         setIsDark(false);
       } else {
-        // system theme
         if (typeof window !== "undefined") {
           setIsDark(window.matchMedia("(prefers-color-scheme: dark)").matches);
         }
@@ -86,4 +82,3 @@ export function FloatingThemeToggle() {
     </motion.button>
   );
 }
-

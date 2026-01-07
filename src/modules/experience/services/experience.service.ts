@@ -4,7 +4,7 @@ import { IExperienceService } from "../interfaces";
 const experiencesData: Experience[] = [
   {
     company: "Bronze Byte IT Solutions",
-    period: "Oct 2025 – Present",
+    period: "May 2025 – Oct 2025",
     role: "Software Engineer · MERN & Backend Services",
     items: [
       "MERN stack development",

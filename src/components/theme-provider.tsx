@@ -5,6 +5,7 @@ import {
   useCallback,
   useContext,
   useEffect,
+  useLayoutEffect,
   useState,
   type ReactNode,
 } from "react";
@@ -40,7 +41,10 @@ function resolveTheme(theme: Theme): "light" | "dark" {
 }
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
-  const [theme, setThemeState] = useState<Theme>("system");
+  const [theme, setThemeState] = useState<Theme>(() => {
+    if (typeof window === "undefined") return "system";
+    return getPreferredTheme();
+  });
   const [mounted, setMounted] = useState(false);
 
   const applyTheme = useCallback((value: Theme) => {
@@ -49,25 +53,23 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     const root = window.document.documentElement;
     const resolved = resolveTheme(value);
 
-    // Remove both light and dark classes first
     root.classList.remove("light", "dark");
-    
-    // For Tailwind dark mode: add 'dark' class only for dark theme
-    // For CSS color-scheme: add appropriate class
+
     if (resolved === "dark") {
       root.classList.add("dark");
     } else {
-      // Light mode: add 'light' class for color-scheme, ensure 'dark' is removed
       root.classList.add("light");
     }
   }, []);
 
-  useEffect(() => {
-    const preferred = getPreferredTheme();
-    setThemeState(preferred);
-    applyTheme(preferred);
+  useLayoutEffect(() => {
+    applyTheme(theme);
+  }, [theme, applyTheme]);
+
+  useLayoutEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true);
-  }, [applyTheme]);
+  }, []);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -110,7 +112,6 @@ export function useTheme() {
   if (!ctx) {
     return {
       theme: "dark" as Theme,
-      // eslint-disable-next-line @typescript-eslint/no-empty-function
       setTheme: () => {},
     };
   }

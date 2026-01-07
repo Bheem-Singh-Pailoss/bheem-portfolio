@@ -1,6 +1,5 @@
 import { Variants } from "framer-motion";
 
-// Fade in from bottom
 export const fadeInUp: Variants = {
   hidden: { opacity: 0, y: 30 },
   visible: {
@@ -13,7 +12,6 @@ export const fadeInUp: Variants = {
   },
 };
 
-// Fade in from top
 export const fadeInDown: Variants = {
   hidden: { opacity: 0, y: -30 },
   visible: {
@@ -26,7 +24,6 @@ export const fadeInDown: Variants = {
   },
 };
 
-// Fade in from left
 export const fadeInLeft: Variants = {
   hidden: { opacity: 0, x: -30 },
   visible: {
@@ -39,7 +36,6 @@ export const fadeInLeft: Variants = {
   },
 };
 
-// Fade in from right
 export const fadeInRight: Variants = {
   hidden: { opacity: 0, x: 30 },
   visible: {
@@ -52,7 +48,6 @@ export const fadeInRight: Variants = {
   },
 };
 
-// Scale in
 export const scaleIn: Variants = {
   hidden: { opacity: 0, scale: 0.8 },
   visible: {
@@ -65,7 +60,6 @@ export const scaleIn: Variants = {
   },
 };
 
-// Stagger container
 export const staggerContainer: Variants = {
   hidden: { opacity: 0 },
   visible: {
@@ -77,7 +71,6 @@ export const staggerContainer: Variants = {
   },
 };
 
-// Stagger item
 export const staggerItem: Variants = {
   hidden: { opacity: 0, y: 20 },
   visible: {
@@ -90,7 +83,6 @@ export const staggerItem: Variants = {
   },
 };
 
-// Card hover animation
 export const cardHover = {
   scale: 1.02,
   y: -4,
@@ -100,10 +92,8 @@ export const cardHover = {
   },
 };
 
-// Viewport animation settings
 export const viewportSettings = {
   once: true,
   amount: 0.3,
   margin: "0px 0px -100px 0px",
 };
-

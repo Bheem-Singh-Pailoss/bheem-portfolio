@@ -48,7 +48,6 @@ export function HeroView() {
           variants={container}
           className="grid items-center gap-12 lg:grid-cols-[1.5fr_1fr]"
         >
-          {/* LEFT CONTENT */}
           <div className="space-y-9">
             <motion.div variants={item} className="space-y-4">
               <span className="gradient-pill">{heroData.title}</span>
@@ -94,7 +93,6 @@ export function HeroView() {
               </div>
             </motion.div>
 
-            {/* TECH STACK ANIMATION */}
             <motion.div
               className="flex flex-wrap gap-2"
               initial="hidden"
@@ -113,7 +111,6 @@ export function HeroView() {
             </motion.div>
           </div>
 
-          {/* RIGHT CARD */}
           <motion.div
             variants={item}
             className="relative overflow-hidden rounded-3xl border border-emerald-500/40 dark:border-emerald-500/40 bg-gradient-to-br from-slate-100 via-slate-50 to-slate-100 dark:from-slate-900 dark:via-slate-950 dark:to-slate-900 p-[1px] shadow-xl shadow-emerald-500/20 dark:shadow-emerald-500/30"

@@ -34,7 +34,7 @@ export function ProjectsView() {
         whileInView="visible"
         viewport={viewportSettings}
       >
-        {projects.map((project, index) => (
+        {projects.map((project) => (
           <motion.button
             key={project.title}
             type="button"

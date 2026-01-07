@@ -49,8 +49,17 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     const root = window.document.documentElement;
     const resolved = resolveTheme(value);
 
+    // Remove both light and dark classes first
     root.classList.remove("light", "dark");
-    root.classList.add(resolved);
+    
+    // For Tailwind dark mode: add 'dark' class only for dark theme
+    // For CSS color-scheme: add appropriate class
+    if (resolved === "dark") {
+      root.classList.add("dark");
+    } else {
+      // Light mode: add 'light' class for color-scheme, ensure 'dark' is removed
+      root.classList.add("light");
+    }
   }, []);
 
   useEffect(() => {

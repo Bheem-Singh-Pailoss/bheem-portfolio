@@ -155,11 +155,6 @@ export function ContactView() {
               mnegi0876@gmail.com
             </motion.a>
           </motion.div>
-          <div className="text-xs text-slate-600 dark:text-slate-500">
-            EmailJS uses client-side delivery. No backend or server deployment
-            is required for this form to work—just configure your service,
-            template, and public key in environment variables.
-          </div>
         </motion.aside>
       </div>
     </Section>

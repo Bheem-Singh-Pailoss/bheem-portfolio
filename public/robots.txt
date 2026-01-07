@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://bheem-singh-pailoss.github.io/bheem-portfolio/sitemap.xml
+
